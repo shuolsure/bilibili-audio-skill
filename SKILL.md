@@ -46,7 +46,8 @@ open ~/B站音频下载/
 ### 2. 获取视频列表
 
 ```bash
-python3 ~/bilibili_space_crawler.py <用户ID> ~/bilibili_<用户ID>_videos.csv
+SCRIPT_DIR="$(dirname "$0")"
+python3 ~/.claude/skills/bilibili-audio/scripts/bilibili_space_crawler.py <用户ID> ~/bilibili_<用户ID>_videos.csv
 ```
 
 ### 3. 提取视频URL
