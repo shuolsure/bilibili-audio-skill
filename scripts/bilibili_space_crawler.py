@@ -6,6 +6,7 @@ B站用户空间视频列表抓取工具
 
 import hashlib
 import time
+import random
 import requests
 import json
 import os
@@ -163,7 +164,8 @@ def main():
                 break
             
             page += 1
-            time.sleep(1)  # 控制请求频率
+            delay = random.uniform(2, 5)
+            time.sleep(delay)
             
         except Exception as e:
             print(f"错误: {e}")
