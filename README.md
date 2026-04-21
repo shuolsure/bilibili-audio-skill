@@ -68,27 +68,19 @@ bilibili-audio/
 ├── SKILL.md                           # Claude Code Skill 定义
 ├── README.md                          # 使用说明
 └── scripts/
-    ├── bbdown_space_crawler.py       # 使用 BBDown 获取视频列表（推荐）
-    └── bilibili_space_crawler.py     # 备选：API 爬取视频列表
+    └── bbdown_space_crawler.py       # 使用 BBDown 获取视频列表
 ```
 
 ## 🔧 技术原理
 
 ### 获取视频列表
 
-本 Skill 提供两种获取 UP主视频列表的方法：
+使用 BBDown 的内置能力获取 UP主视频列表：
 
-1. **BBDown 方法（推荐）**
-   - 使用 `bbdown_space_crawler.py` 脚本
-   - 调用 `BBDown --debug` 获取视频列表
-   - 利用 BBDown 的内置能力，稳定可靠
-   - 无需担心 API 频率限制
-
-2. **API 爬取方法（备选）**
-   - 使用 `bilibili_space_crawler.py` 脚本
-   - 直接调用 B站 API 获取视频列表
-   - 需要有效的 Cookie
-   - 可能遇到 API 频率限制
+- 使用 `bbdown_space_crawler.py` 脚本
+- 调用 `BBDown --debug` 获取视频列表
+- 利用 BBDown 的内置能力，稳定可靠
+- 无需担心 API 频率限制
 
 ## 📁 输出位置
 
@@ -115,7 +107,6 @@ bilibili-audio/
 | 视频不可用 | 可能被删除或会员专享 |
 | 重新下载已跳过的 | `rm -f ~/tools/BBDown.archives` |
 | 获取视频列表失败 | 检查 BBDown 是否已登录 |
-| API 频率限制 | 等待一段时间后重试，或使用 BBDown 方法 |
 
 ## 📋 示例
 
