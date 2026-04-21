@@ -43,12 +43,20 @@ open ~/B站音频下载/
 
 从 `https://space.bilibili.com/593926706` 提取 `593926706`。
 
-### 2. 获取视频列表
+### 2. 获取视频列表（推荐方法：使用 BBDown）
+
+使用 BBDown 的 debug 模式获取视频列表，无需硬爬 API：
 
 ```bash
 SCRIPT_DIR="$(dirname "$0")"
-python3 ~/.claude/skills/bilibili-audio/scripts/bilibili_space_crawler.py <用户ID> ~/bilibili_<用户ID>_videos.csv
+python3 ~/.claude/skills/bilibili-audio/scripts/bbdown_space_crawler.py <用户ID> ~/bilibili_<用户ID>_videos.csv
 ```
+
+**原理说明：**
+- BBDown 在解析 UP主空间时会获取完整的视频列表
+- 通过 `--debug` 参数可以输出原始 JSON 数据
+- 脚本从 debug 输出中提取 bvid 和标题信息
+- 此方法使用 BBDown 的内置能力，更加稳定可靠
 
 ### 3. 提取视频URL
 
@@ -82,6 +90,17 @@ open ~/B站音频下载/<用户ID>/
 
 报告下载数量和失败情况。
 
+## 备选方法：使用 API 爬取
+
+如果 BBDown 方法不可用，可以使用备选的 API 爬取方法：
+
+```bash
+SCRIPT_DIR="$(dirname "$0")"
+python3 ~/.claude/skills/bilibili-audio/scripts/bilibili_space_crawler.py <用户ID> ~/bilibili_<用户ID>_videos.csv
+```
+
+**注意：** 此方法需要有效的 B站 Cookie，且可能遇到 API 频率限制。
+
 ## 功能特性
 
 - 最高音质（自动选择最高码率）
@@ -89,6 +108,7 @@ open ~/B站音频下载/<用户ID>/
 - 字幕自动嵌入（如可用）
 - 文件命名：日期_标题_BV号.m4a
 - 批量下载有5秒间隔防封禁
+- 使用 BBDown 内置能力获取视频列表，稳定可靠
 
 ## 故障排查
 
@@ -98,3 +118,5 @@ open ~/B站音频下载/<用户ID>/
 | Cookie 过期 | 重新登录B站更新 cookie |
 | 视频不可用 | 可能被删除或会员专享 |
 | 重新下载已跳过的 | rm -f ~/tools/BBDown.archives |
+| 获取视频列表失败 | 检查 BBDown 是否已登录 |
+| API 频率限制 | 等待一段时间后重试，或使用 BBDown 方法 |
