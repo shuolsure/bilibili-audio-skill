@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
-从 BBDown debug 输出中提取 UP主视频列表
-使用 BBDown 的内置能力获取视频列表，无需硬爬 API
+从 BBDown debug 输出中提取 UP主动态/空间视频列表
+支持提取隐藏空间的视频列表
 """
 
 import subprocess
 import re
 import sys
 import os
+import json
 
 def get_video_list_from_bbdown(uid, cookie=None):
     """

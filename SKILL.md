@@ -57,6 +57,7 @@ python3 ~/.claude/skills/bilibili-audio/scripts/bbdown_space_crawler.py <用户I
 - 通过 `--debug` 参数可以输出原始 JSON 数据
 - 脚本从 debug 输出中提取 bvid 和标题信息
 - 此方法使用 BBDown 的内置能力，更加稳定可靠
+- **支持获取隐藏空间的视频列表**（即使 UP主设置了隐私保护）
 
 ### 3. 提取视频URL
 
