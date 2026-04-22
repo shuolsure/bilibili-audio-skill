@@ -13,6 +13,7 @@ import json
 def get_video_list_from_bbdown(uid, cookie=None):
     """
     使用 BBDown 的 debug 模式获取 UP主视频列表
+    支持提取隐藏空间的视频列表
     
     参数:
         uid: UP主用户ID
@@ -24,7 +25,7 @@ def get_video_list_from_bbdown(uid, cookie=None):
     cmd = f'BBDown'
     if cookie:
         cmd += f' -c "{cookie}"'
-    cmd += f' --debug "https://space.bilibili.com/{uid}"'
+    cmd += f' --debug "https://space.bilibili.com/{uid}/upload/video"'
     
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     output = result.stdout + result.stderr

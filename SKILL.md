@@ -53,11 +53,12 @@ python3 ~/.claude/skills/bilibili-audio/scripts/bbdown_space_crawler.py <用户I
 ```
 
 **原理说明：**
-- BBDown 在解析 UP主空间时会获取完整的视频列表
+- BBDown 在解析 UP主空间投稿页面时会获取完整的视频列表
 - 通过 `--debug` 参数可以输出原始 JSON 数据
 - 脚本从 debug 输出中提取 bvid 和标题信息
 - 此方法使用 BBDown 的内置能力，更加稳定可靠
 - **支持获取隐藏空间的视频列表**（即使 UP主设置了隐私保护）
+- 使用 `/upload/video` 页面绕过部分 412 限制
 
 ### 3. 提取视频URL
 
